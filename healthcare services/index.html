@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RuralCare - Healthcare System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- LOGIN PAGE -->
+    <section id="loginPage" class="page login-page">
+      <div class="login-box">
+        <div class="logo">🏥</div>
+
+        <h1>RuralCare</h1>
+
+        <p>Intelligent Rural Patient Care System</p>
+
+        <input type="email" id="email" placeholder="Enter Email" />
+
+        <input type="password" id="password" placeholder="Enter Password" />
+
+        <button onclick="login()">Login</button>
+
+        <small>Prototype Version</small>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboardPage" class="page hidden">
+      <header>
+        <div>
+          <h1>🏥 RuralCare</h1>
+          <p>Intelligent Rural Patient Care System</p>
+        </div>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </header>
+
+      <main>
+        <h2>Healthcare Dashboard</h2>
+
+        <div class="cards">
+          <div class="card">
+            <h3>👤 Patients</h3>
+            <h2 id="patientCount">0</h2>
+            <p>Registered Patients</p>
+          </div>
+
+          <div class="card">
+            <h3>📅 Appointments</h3>
+            <h2>0</h2>
+            <p>Today's Appointments</p>
+          </div>
+
+          <div class="card">
+            <h3>🚑 Referrals</h3>
+            <h2>0</h2>
+            <p>Pending Referrals</p>
+          </div>
+
+          <div class="card">
+            <h3>🩺 Triage</h3>
+            <h2 id="triageCount">0</h2>
+            <p>Patients Checked</p>
+          </div>
+        </div>
+
+        <div class="menu">
+          <button onclick="showPage('patientPage')">
+            👤 Patient Registration
+          </button>
+
+          <button onclick="showPage('recordsPage')">📋 Patient Records</button>
+
+          <button onclick="showPage('triagePage')">
+            🩺 AI-Assisted Triage
+          </button>
+        </div>
+      </main>
+    </section>
+
+    <!-- PATIENT REGISTRATION -->
+    <section id="patientPage" class="page hidden">
+      <header>
+        <h1>👤 Patient Registration</h1>
+
+        <button class="back-btn" onclick="showPage('dashboardPage')">
+          ← Dashboard
+        </button>
+      </header>
+
+      <main>
+        <div class="form-box">
+          <h2>Register Patient</h2>
+
+          <label>Patient Name</label>
+          <input
+            type="text"
+            id="patientName"
+            placeholder="Enter patient name"
+          />
+
+          <label>Age</label>
+          <input type="number" id="patientAge" placeholder="Enter age" />
+
+          <label>Gender</label>
+
+          <select id="patientGender">
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+
+          <label>Village</label>
+
+          <input type="text" id="patientVillage" placeholder="Enter village" />
+
+          <label>Symptoms</label>
+
+          <textarea
+            id="patientSymptoms"
+            placeholder="Enter symptoms"
+          ></textarea>
+
+          <button onclick="registerPatient()">Register Patient</button>
+        </div>
+      </main>
+    </section>
+
+    <!-- PATIENT RECORDS -->
+    <section id="recordsPage" class="page hidden">
+      <header>
+        <h1>📋 Patient Records</h1>
+
+        <button class="back-btn" onclick="showPage('dashboardPage')">
+          ← Dashboard
+        </button>
+      </header>
+
+      <main>
+        <div class="record-box">
+          <h2>Registered Patient</h2>
+
+          <div id="patientRecord">
+            <p>No patient registered yet.</p>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- TRIAGE -->
+    <section id="triagePage" class="page hidden">
+      <header>
+        <h1>🩺 AI-Assisted Triage</h1>
+
+        <button class="back-btn" onclick="showPage('dashboardPage')">
+          ← Dashboard
+        </button>
+      </header>
+
+      <main>
+        <div class="form-box">
+          <h2>Check Patient Urgency</h2>
+
+          <p>Enter symptoms to get a preliminary urgency level.</p>
+
+          <textarea
+            id="triageSymptoms"
+            placeholder="Example: fever and vomiting"
+          ></textarea>
+
+          <button onclick="checkTriage()">Analyze Symptoms</button>
+
+          <div id="triageResult"></div>
+
+          <p class="warning">
+            This is only a prototype and does not replace professional medical
+            diagnosis.
+          </p>
+        </div>
+      </main>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
